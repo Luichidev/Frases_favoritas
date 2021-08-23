@@ -113,7 +113,7 @@ function create_rows($array){
   
   if(!empty($array)){
     foreach ($array as $value) {
-      $button = "<a href=\"{$_SERVER["PHP_SELF"]}?edit\" class=\"btn success\">✏️</a>" . PHP_EOL;
+      $button = "<a href=\"{$_SERVER["PHP_SELF"]}?edit={$value["idquote"]}\" class=\"btn success\">✏️</a>" . PHP_EOL;
       $button_del = "<a href=\"{$_SERVER["PHP_SELF"]}?delete={$value["idquote"]}\" class=\"btn danger\">🗑️</a>" . PHP_EOL;
       $res .= "<tr>";
       $res .= "<input type=\"text\" name=\"idQuo\" value=\"{$value["idquote"]}\" hidden>";

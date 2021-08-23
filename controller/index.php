@@ -10,6 +10,10 @@
   $name = "";
   $pass = "";
   $err = "";
+  $quote = "";
+  $author = "";
+  $category = "";
+  $isPublic = true;
   
   if(!isset($_SESSION["count"]))
     $_SESSION["count"] = 3;
@@ -65,15 +69,20 @@
     }
 
     if(isset($_POST["sendEdit"])){
-      $id = $_POST["idfav"];
-      $url = sanitize($_POST["url"]);
+      $frase = sanitize($_POST["frase"]);
+      $autor = sanitize($_POST["autor"]);
       $checked = isset($_POST["esPublico"])? 1 : 0;
-      $description = sanitize($_POST["description"]);
-      if(empty($url))
-        $err .= "<p class=\"noAuth\">*La URL no puede estar vacía 🚫</p>";
+      $categoria = sanitize($_POST["categoria"]);
+      if(empty($frase))
+        $err .= "<p class=\"noAuth\">*La frase no puede estar vacía 🚫</p>";
+      if(empty($autor))
+        $err .= "<p class=\"noAuth\">*El campo autor no puede estar vacío 🚫</p>";
+
       if(empty($err)){
-        updateQuotes($id, $url, $description, $checked);
+        editQuotes($_SESSION["idQuote"], $frase, $autor, $categoria, $checked);
         $_SESSION["data"] = getQuotes($_SESSION["iduser"]);
+        header("location:index.php");
+        exit;
       }
     }
 
@@ -137,6 +146,19 @@
       $id = $_GET["delete"];
       deleteQuotes($id);
       $_SESSION["data"] = getQuotes($_SESSION["iduser"]);
+    }
+
+    if(isset($_GET["edit"])){
+      $id = intval($_GET["edit"]);
+      if(is_numeric($id)){
+        $_SESSION["idQuote"] = $id;
+        $data = getQuoteById($id);
+        $quote = $data[0]["quo_quote"];
+        $author = $data[0]["quo_author"];
+        $category = $data[0]["quo_category"];
+        $isPublic = $data[0]["quo_isPublic"];
+        $edit = true;
+      }
     }
   }
 

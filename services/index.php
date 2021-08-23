@@ -24,6 +24,12 @@ function getQuotes($iduser){
   return !empty($res)? $res : [];
 }
 
+function getQuoteById($id){
+  $sql = "SELECT * FROM quotes WHERE idquote = {$id}";
+  $res = getData($sql);
+  return !empty($res)? $res : [];
+}
+
 function updateQuotes($id, $url, $description, $checked){
   $sql = "UPDATE quotes SET quo_url = '{$url}', quo_description = '{$description}', quo_isPublic = '{$checked}' WHERE idfavorite = {$id}";
   sendData($sql);
@@ -32,7 +38,11 @@ function updateQuotes($id, $url, $description, $checked){
 function insertQuotes($iduser, $frase, $autor, $categoria, $checked){
   $sql = "INSERT INTO quotes (quo_iduser, quo_quote, quo_author, quo_category, quo_isPublic) VALUES({$iduser}, '{$frase}', '{$autor}', '{$categoria}', {$checked})";
   sendData($sql);
+}
 
+function editQuotes($id, $frase, $autor, $categoria, $checked){
+  $sql = "UPDATE quotes SET quo_quote='{$frase}', quo_author='{$autor}', quo_category='{$categoria}', quo_isPublic='{$checked}' WHERE idquote={$id}";
+  sendData($sql);
 }
 
 function deleteQuotes($id){
