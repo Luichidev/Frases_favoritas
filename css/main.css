@@ -12,15 +12,15 @@ html {
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
-  overflow: hidden;
-  margin: 0;
-  padding: 0;
   background-image: radial-gradient(var(--secondColor) 1px, #fdfdfd 1px),
     radial-gradient(var(--mainColor) 1px, #fdfdfd 1px);
   background-position: 0 0, 25px 25px;
   background-size: 20px 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
   overflow-y: scroll;
+  overflow: hidden;
+  padding: 0;
 }
 
 a {
@@ -34,19 +34,19 @@ h2 {
 }
 
 .baneado {
-  font-size: 4rem;
   background-color: #ffffffaa;
-  padding: 20px;
   border-radius: 20px;
+  font-size: 4rem;
+  padding: 20px;
 }
 
 section.flex-container {
-  height: 100vh;
-  background-image: url("../images/fondo.jpg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
   align-items: center;
+  background-image: url("../images/fondo.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
 }
 
 label {
@@ -75,13 +75,13 @@ p.noAuth {
 }
 
 .form-container {
-  min-width: 330px;
-  max-width: 330px;
-  border: 1px solid var(--mainColor);
-  border-radius: 10px;
-  padding: 5px;
   background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 10px;
+  border: 1px solid var(--mainColor);
   box-shadow: 5px 5px 5px var(--mainColor);
+  max-width: 330px;
+  min-width: 330px;
+  padding: 5px;
 }
 
 .flex-container {
@@ -113,11 +113,15 @@ p.noAuth {
 }
 
 .btn {
-  width: 100px;
-  padding: 5px 10px;
   border-radius: 5px;
   cursor: pointer;
   font-weight: bold;
+  padding: 5px 10px;
+  width: 100px;
+}
+
+a.btn {
+  padding: 2px 2px;
 }
 
 .success {
@@ -144,14 +148,14 @@ p.noAuth {
   display: inline-block;
 }
 .table {
+  background: #fff;
+  border-collapse: collapse;
   border-color: #e2e7eb;
   border-radius: 3px;
-  background: #fff;
-  width: 100%;
-  max-width: 100%;
-  margin-bottom: 20px;
   border-spacing: 0;
-  border-collapse: collapse;
+  margin-bottom: 20px;
+  max-width: 100%;
+  width: 100%;
 }
 th,
 td {
@@ -165,16 +169,16 @@ td {
 }
 /****************ESTILOS CARD*****************/
 .card {
-  justify-content: space-between;
+  background-color: #fff;
   border: solid 1px var(--mainColor);
-  min-width: 330px;
-  max-width: 330px;
-  width: 330px;
-  margin: 10px 0;
   box-shadow: 2px 2px 5px var(--secondColor) inset,
     -2px -2px 5px var(--secondColor) inset;
-  background-color: #fff;
+  justify-content: space-between;
+  margin: 10px 0;
+  max-width: 330px;
+  min-width: 330px;
   padding-bottom: 10px;
+  width: 330px;
 }
 
 .card-title {
@@ -207,10 +211,10 @@ td {
   width: 14px;
 }
 textarea {
-  vertical-align: top;
+  font-family: Arial, Helvetica, sans-serif;
   min-height: 100px;
   resize: none;
-  font-family: Arial, Helvetica, sans-serif;
+  vertical-align: top;
 }
 .card-footer {
   text-align: center;
@@ -220,20 +224,20 @@ textarea {
 .wrapper {
   display: grid;
   grid-template-areas: "overlap";
+  margin-bottom: 20px;
   place-content: center;
   text-transform: uppercase;
-  margin-bottom: 20px;
 }
 .wrapper > div {
-  background-clip: text;
   -webkit-background-clip: text;
+  -webkit-text-stroke: 4px transparent;
+  background-clip: text;
   color: #363833;
   font-family: "Poppins", sans-serif;
-  font-weight: 900;
   font-size: clamp(2em, 4vw, 4rem);
+  font-weight: 900;
   grid-area: overlap;
   letter-spacing: 1px;
-  -webkit-text-stroke: 4px transparent;
 }
 div.bg {
   background-image: repeating-linear-gradient(
@@ -257,6 +261,7 @@ div.fg {
   color: #1e2127;
   transform: scale(1);
 }
+
 @media screen and (min-width: 464px) {
   .form-container {
     min-width: 400px;
